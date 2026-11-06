@@ -25,6 +25,7 @@ const {
   icon = 'arrowRight',
   as = 'a',
   type = 'button',
+  ...rest
 } = Astro.props;
 
 ---
@@ -35,6 +36,7 @@ const {
       type={type}
       class:list={['slide-reveal-btn', 'cursor-pointer appearance-none border-0 bg-transparent p-0 font-inherit', className]}
       aria-label={ariaLabel}
+      {...rest}
     >
       <span class="slide-reveal-btn__icon" aria-hidden="true">
         <Icon name={icon} size={18} class="slide-reveal-btn__svg" />
@@ -44,7 +46,14 @@ const {
       </span>
     </button>
   ) : (
-    <a href={href} class:list={['slide-reveal-btn', className]} aria-label={ariaLabel} rel={rel} target={target}>
+    <a
+      href={href}
+      class:list={['slide-reveal-btn', className]}
+      aria-label={ariaLabel}
+      rel={rel}
+      target={target}
+      {...rest}
+    >
       <span class="slide-reveal-btn__icon" aria-hidden="true">
         <Icon name={icon} size={18} class="slide-reveal-btn__svg" />
       </span>
