@@ -27,7 +27,7 @@ const lastRowIndex = why.rows.length - 1;
     <div
       class="mt-14 hidden justify-center lg:flex"
       role="table"
-      aria-label="DotaCheats compared with typical providers"
+      aria-label="BorderlandsCheats compared with typical free trainer pages"
     >
       <div
         class="why-compare-layout grid w-full max-w-4xl grid-cols-[minmax(0,1fr)_9.25rem_9.25rem] items-stretch gap-x-10 xl:max-w-5xl xl:gap-x-14"
@@ -43,9 +43,9 @@ const lastRowIndex = why.rows.length - 1;
                 class="why-compare-feature-row flex flex-col justify-center gap-2"
                 role="row"
               >
-                <h3 class="font-[family-name:var(--font-heading)] text-lg font-bold leading-snug text-foreground md:text-xl">
+                <h2 class="font-[family-name:var(--font-heading)] text-lg font-bold leading-snug text-foreground md:text-xl">
                   {row.title}
-                </h3>
+                </h2>
                 <p class="text-sm leading-relaxed text-muted-foreground">
                   {row.desc}
                 </p>
@@ -189,7 +189,7 @@ const lastRowIndex = why.rows.length - 1;
   <div class="mx-auto max-w-6xl px-5 md:px-6">
     <header class="section-header section-header--wide deployment-header">
       <p class="section-header__eyebrow">{t.setup.eyebrow}</p>
-      <h1 id="setup-title" class="section-header__title">
+      <h2 id="setup-title" class="section-header__title">
         {t.setup.titleLead}{" "}
         <span
           class="deployment-title-highlight relative inline-block whitespace-nowrap"
@@ -197,7 +197,7 @@ const lastRowIndex = why.rows.length - 1;
           {t.setup.titleHighlight}
           <span class="deployment-title-underline" aria-hidden="true"></span>
         </span>
-      </h1>
+      </h2>
       <p class="section-header__subtitle">{t.setup.intro}</p>
     </header>
 

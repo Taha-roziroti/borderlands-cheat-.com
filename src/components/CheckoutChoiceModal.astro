@@ -1,0 +1,51 @@
+---
+import { checkoutPath } from '../config/checkout';
+import { t } from '../i18n';
+import { Button } from '@/components/starwind/button';
+
+const items = [
+  { href: checkoutPath('borderlands3'), label: t.ui.checkoutChoiceBl3 },
+  { href: checkoutPath('cloudDma'), label: t.ui.checkoutChoiceCloudDma },
+  { href: checkoutPath('hwidSpoofer'), label: t.ui.checkoutChoiceSpoofer },
+];
+---
+
+<dialog
+  id="checkout-choice-dialog"
+  class="checkout-choice-dialog pointer-events-auto z-[100] max-h-[85vh] w-[min(100vw-2rem,22rem)] rounded-xl border border-border bg-card p-0 text-foreground shadow-xl backdrop:bg-black/60"
+  aria-labelledby="checkout-choice-title"
+>
+  <div class="border-b border-border px-5 py-4">
+    <p id="checkout-choice-title" class="text-lg font-semibold leading-tight" role="heading" aria-level="2">
+      {t.ui.checkoutChoiceTitle}
+    </p>
+    <p class="mt-1 text-sm text-muted-foreground">{t.ui.checkoutChoiceSubtitle}</p>
+  </div>
+  <ul class="flex flex-col gap-1 p-2">
+    {
+      items.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="flex w-full rounded-lg px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="border-t border-border p-2">
+    <form method="dialog">
+      <Button type="submit" variant="ghost" class="w-full justify-center text-sm">
+        {t.ui.checkoutChoiceCancel}
+      </Button>
+    </form>
+  </div>
+</dialog>
+
+<style is:global>
+  .checkout-choice-dialog::backdrop {
+    background: rgb(0 0 0 / 0.55);
+  }
+</style>

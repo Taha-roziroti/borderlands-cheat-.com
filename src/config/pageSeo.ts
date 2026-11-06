@@ -1,6 +1,5 @@
 /**
- * Central titles/descriptions for high-traffic routes.
- * After Search Console shows impressions, edit the matching path here and redeploy.
+ * Central titles/descriptions for routes.
  */
 
 export interface PageSeoEntry {
@@ -10,59 +9,59 @@ export interface PageSeoEntry {
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
-    // gscNote: Keep primary keyword "dota 2 cheats" near front; trim if title truncates in SERP.
-    title: 'Dota 2 Cheats & Hacks | Scripts, Map Hack & ESP',
+    title: 'Borderlands 3 PC cheat tools | soft aim, ESP & radar',
     description:
-      'Dota 2 cheats for PC ranked: scripts, map hack, zoom hack, and skin changer tiers updated every patch at dotacheats.com.',
+      'Borderlands 3 cheats for PC: configurable soft aim, enemy and loot ESP, radar, and stream-proof overlay. Compare plans and setup notes on borderlandscheats.com.',
   },
-  '/products/dota-2-cheats/': {
-    title: 'Dota 2 Elite Cheats & Utility Products',
+  '/borderlands-3-aimbot/': {
+    title: 'Borderlands 3 Aimbot & Soft Aim Settings | PC',
     description:
-      'Elite dota 2 cheats plus HWID spoofer, UGC tools, and Skin Changer utilities for Steam ranked on dotacheats.com.',
+      'Borderlands 3 aimbot page: FOV, smoothing, target bone, aim key, and visible checks for soft aim on PC. Read the feature list before checkout.',
   },
-  '/products/dota-2-cheats/elite/': {
-    title: 'Dota 2 Elite Cheats | Bots & Full Map Hack',
+  '/borderlands-3-esp/': {
+    title: 'Borderlands 3 ESP | Enemy, Boss & Loot on PC',
     description:
-      'Elite tier: auto farm bot, kill steal, skin changer, full map hack suite, and priority patch delivery.',
+      'Borderlands 3 ESP: enemy and boss highlights, loot rarity filters, radar range, and markers. See what the ESP menu can display on PC before you buy.',
   },
-  '/products/dota-2-cheats/utilities/': {
-    title: 'Dota 2 Utilities | HWID, UGC & Skin Changer',
+  '/borderlands-3-pricing/': {
+    title: 'Borderlands 3 Cheat Price | Monthly or Lifetime',
     description:
-      'Choose HWID Spoofer, UGC, or Skin Changer—when each utility fits and links to full product pages.',
+      'Borderlands 3 cheat pricing: monthly and lifetime access with the same listed feature set. Confirm current price and term on the seller checkout page before paying.',
   },
-  '/blog/': {
-    title: 'Dota 2 Cheats Guides & Patch Notes',
+  '/cloud-dma-borderlands-3/': {
+    title: 'Cloud DMA Borderlands 3 setup | Hyper-V host guide',
     description:
-      'Setup guides, Lite vs Pro comparisons, VAC patch checklists, and ranked config tips for dota cheats.',
+      'Cloud DMA for Borderlands 3: Hyper-V on one PC, firmware and Windows security checks, and how it fits the supported cheat stack. Read requirements before purchase.',
   },
-  '/forum/': {
-    title: 'Dota 2 Community Forum | DotaCheats',
-    description: 'Join Dota players to discuss heroes, builds, patch changes, guides, and community moments.',
+  '/borderlands-3-cheats-setup/': {
+    title: 'Borderlands 3 Cheat Setup | Windows & Cloud DMA',
+    description:
+      'Borderlands 3 cheat setup for Windows 10 and 11: RAM, virtualization, Hyper-V, and Cloud DMA steps. Use this guide with the seller’s loader documentation.',
   },
   '/faq/': {
-    title: 'FAQ | Dota 2 Cheats, Products & Setup',
+    title: 'Borderlands 3 Cheats FAQ | Features & Checkout',
     description:
-      'Answers on cheat tiers, map hack, scripts, HWID tools, checkout, and blog guides at dotacheats.com.',
+      'FAQ for Borderlands 3 soft aim, ESP, Cloud DMA, Steam or Epic PC clients, pricing, and checkout links. Short answers with links to full pages on this site.',
   },
   '/terms/': {
-    title: 'Terms & Conditions | DotaCheats',
+    title: 'Terms of use for BorderlandsCheats visitors | BL3 site',
     description:
-      'Purchase terms, license use, and refund policy for DotaCheats products sold through dotacheats.com.',
+      'Terms for using borderlandscheats.com and for purchases started through outbound checkout links. Read together with the Privacy Policy.',
   },
   '/privacy/': {
-    title: 'Privacy Policy | DotaCheats',
+    title: 'Privacy policy for borderlandscheats.com | data & cookies',
     description:
-      'How dotacheats.com uses analytics, cookies, and contact data when you browse or request support.',
+      'How borderlandscheats.com uses analytics, cookies, and contact details when you browse or email support. No sale of personal data; see full policy.',
   },
   '/about/': {
-    title: 'About DotaCheats',
+    title: 'About BorderlandsCheats | Borderlands 3 Info Site',
     description:
-      'What DotaCheats publishes: Dota 2 cheat tiers, utilities, guides, and status notes at dotacheats.com.',
+      'BorderlandsCheats explains Borderlands 3 PC cheat features, Cloud DMA context, and setup. Purchases and delivery are handled by the linked seller after checkout.',
   },
   '/support/': {
-    title: 'Support | DotaCheats',
+    title: 'Support and contact for BorderlandsCheats | orders & FAQ',
     description:
-      'Get help with loader setup, HWID, and checkout for Dota 2 cheat tiers and utilities.',
+      'Contact BorderlandsCheats for site and link questions. Order and loader issues go through the seller’s channels tied to your checkout receipt.',
   },
 };
 

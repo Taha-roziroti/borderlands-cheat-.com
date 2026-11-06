@@ -55,6 +55,7 @@ const c = t.support;
                   variant="outline"
                   size="sm"
                   class="w-full"
+                  {...(channel.href.startsWith('http') ? { rel: 'noopener noreferrer', target: '_blank' } : {})}
                 >
                   {channel.linkLabel}
                   <Icon name="arrowRight" size={17} />
@@ -69,7 +70,7 @@ const c = t.support;
     {
       showTicketTips && (
         <div class="support-section__tips">
-          <h3 class="support-section__tips-title">{c.ticketTitle}</h3>
+          <h2 class="support-section__tips-title">{c.ticketTitle}</h2>
           <ul class="support-section__tips-list">
             {c.ticketItems.map((item) => (
               <li class="support-section__tips-item">

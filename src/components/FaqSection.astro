@@ -15,6 +15,7 @@ interface Props {
   title?: string;
   subtitle?: string;
   titleId?: string;
+  sectionHeadingLevel?: 'h1' | 'h2';
   showFilters?: boolean;
   filterTopics?: FaqTopic[];
   centered?: boolean;
@@ -30,6 +31,7 @@ const {
   title = 'Straight answers before checkout.',
   subtitle = 'Compatibility, bans and access—no vague promises.',
   titleId = 'faq-heading',
+  sectionHeadingLevel = 'h1',
   showFilters = false,
   filterTopics,
   centered = false,
@@ -40,16 +42,14 @@ const {
 
 const topicLabels: Record<FaqTopic, string> = {
   all: 'All',
-  plans: 'Plans',
-  esp: 'Map hack / ESP',
-  scripts: 'Scripts',
-  safety: 'Safety',
-  products: 'Products',
-  blog: 'Blog',
+  features: 'Features',
+  cloud: 'Cloud DMA',
+  pricing: 'Pricing',
   setup: 'Setup',
+  safety: 'Safety',
 };
 
-const filters = filterTopics ?? (['all', 'plans', 'esp', 'scripts', 'safety', 'products'] as FaqTopic[]);
+const filters = filterTopics ?? (['all', 'features', 'cloud', 'pricing', 'setup', 'safety'] as FaqTopic[]);
 ---
 
 <section
@@ -65,6 +65,7 @@ const filters = filterTopics ?? (['all', 'plans', 'esp', 'scripts', 'safety', 'p
       title={title}
       desc={subtitle}
       titleId={titleId}
+      headingLevel={sectionHeadingLevel}
       centered={centered}
     />
 

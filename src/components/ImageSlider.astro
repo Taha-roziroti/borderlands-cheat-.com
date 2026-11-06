@@ -17,7 +17,7 @@ interface Slide {
 }
 
 interface Props {
-  images: Slide[];
+  images: readonly Slide[];
   id: string;
   variant?: 'default' | 'hero';
   desktopOnly?: boolean;
