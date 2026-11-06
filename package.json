@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "generate:seo-assets": "node scripts/generate-seo-assets.mjs",
-    "build": "node scripts/generate-seo-assets.mjs && node scripts/optimize-images.mjs && astro build && node scripts/prune-dist-images.mjs && node scripts/finalize-sitemap.mjs && node scripts/verify-seo.mjs && node scripts/verify-redirects.mjs && node scripts/indexnow.mjs",
+    "build": "node scripts/generate-seo-assets.mjs && node scripts/generate-brand-icons.mjs && node scripts/optimize-images.mjs && astro build && node scripts/prune-dist-images.mjs && node scripts/finalize-sitemap.mjs && node scripts/verify-seo.mjs && node scripts/verify-redirects.mjs && node scripts/indexnow.mjs",
     "audit": "node scripts/seo-audit.mjs",
     "spellcheck": "cspell lint \"src/**/*.{mdx,astro,ts,tsx,css}\" \"public/robots.txt\" \"public/_redirects\" --no-progress",
     "typecheck": "astro check",
