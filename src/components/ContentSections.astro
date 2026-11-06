@@ -1,38 +1,12 @@
 ---
-import { t } from '../i18n';
-import { getFeaturedBlogPosts } from '../data/blog';
 import WorkflowSection from './WorkflowSection.astro';
-import SectionHeader from './SectionHeader.astro';
-import BlogCard from './BlogCard.astro';
-import Icon from './icons/Icon.astro';
-import { ROUTES } from '../utils/path';
+import ToolkitSection from './ToolkitSection.astro';
 import SiteFaqSection from './SiteFaqSection.astro';
 import { getLandingFaqs } from '../data/faq';
-import { Button } from '@/components/starwind/button';
 
 const homeFaqs = getLandingFaqs();
-const featuredPosts = getFeaturedBlogPosts(3);
 ---
 
 <WorkflowSection />
-
-<section id="blog" class="border-y border-border bg-muted/20 py-16 md:py-24" aria-labelledby="blog-title">
-  <div class="mx-auto max-w-6xl px-5">
-    <SectionHeader eyebrow={t.blog.eyebrow} title={t.blog.title} desc={t.blog.subtitle} titleId="blog-title" />
-
-    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-10">
-      {featuredPosts.map((post, i) => (
-        <BlogCard post={post} index={i} />
-      ))}
-    </div>
-
-    <div class="mt-10 flex justify-start lg:justify-center">
-      <Button as="a" href={ROUTES.blog} variant="outline">
-        {t.blog.viewAll}
-        <Icon name="arrowRight" size={17} />
-      </Button>
-    </div>
-  </div>
-</section>
-
+<ToolkitSection />
 <SiteFaqSection id="faq" titleId="faq-title" items={homeFaqs} />

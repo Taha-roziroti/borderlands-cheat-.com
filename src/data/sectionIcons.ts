@@ -1,15 +1,12 @@
 import type { IconName } from '../components/icons/types';
 
 export const featureIcons: Record<string, IconName> = {
-  Scripts: 'stepCrosshair',
-  'Map Hack / ESP': 'featureEsp',
-  'Minimap & Runes': 'featureRadar',
-  'Auto Combo': 'featureAimbot',
-  'Utility Suite': 'featureUtilitySuite',
-  'Auto Farm Bot': 'compareAutoFarm',
-  'Stream Proof': 'streamProof',
-  'Zoom Hack': 'compareZoomHack',
-  'Cloud Config & Updates': 'compareCloudBackup',
+  'Precision soft aim': 'featureAimbot',
+  'Enemy ESP & bosses': 'featureEsp',
+  'Loot ESP & radar': 'featureRadar',
+  'Gunfeel controls': 'stepCrosshair',
+  'Stream-proof overlay': 'streamProof',
+  'Profiles & Cloud DMA': 'compareCloudBackup',
 };
 
 export const whyUsIcons: IconName[] = ['whyShield', 'whyUsers', 'whyMonitor', 'whyHeadphones'];
@@ -17,12 +14,12 @@ export const whyUsIcons: IconName[] = ['whyShield', 'whyUsers', 'whyMonitor', 'w
 export const setupStepIcons: IconName[] = ['acqPackage', 'acqSettings', 'acqCheck'];
 
 export const toolkitIcons: Record<string, IconName> = {
-  Combat: 'toolkitCombat',
-  Vision: 'toolkitVision',
-  Radar: 'toolkitRadar',
-  Weapons: 'toolkitWeapons',
-  Movement: 'toolkitMovement',
-  Profiles: 'toolkitProfiles',
+  Aim: 'featureAimbot',
+  ESP: 'featureEsp',
+  Loot: 'featureRadar',
+  Radar: 'featureRadar',
+  Gunfeel: 'stepCrosshair',
+  Capture: 'streamProof',
 };
 
 export const workflowIcons: IconName[] = [
@@ -34,33 +31,16 @@ export const workflowIcons: IconName[] = [
 
 export const fieldNoteIcons: IconName[] = ['fieldCalendar', 'fieldShield', 'fieldHeadphones'];
 
-export const blogTagIcons: Record<string, IconName> = {
-  Guides: 'navBlog',
-  Setup: 'settings',
-  Features: 'layers',
-  Updates: 'refresh',
-  Troubleshooting: 'alert',
-};
+export const blogTagIcons: Record<string, IconName> = {};
 
 export const heroStatusPills: { icon: IconName; label: string }[] = [
-  { icon: 'espActive', label: 'ESP Active' },
-  { icon: 'radarOnline', label: 'Radar Online' },
-  { icon: 'seasonBuild', label: 'Season Build' },
-  { icon: 'undetected', label: 'Undetected' },
-  { icon: 'softAim', label: 'Soft Aim Ready' },
-  { icon: 'noRecoil', label: 'No Recoil' },
-  { icon: 'streamProof', label: 'Stream Proof' },
+  { icon: 'softAim', label: 'Soft aim' },
+  { icon: 'featureEsp', label: 'Enemy ESP' },
   { icon: 'lootEsp', label: 'Loot ESP' },
-  { icon: 'skeletonEsp', label: 'Skeleton ESP' },
-  { icon: 'uavRadar', label: 'UAV Radar' },
-  { icon: 'mapHack', label: 'Map Hack' },
-  { icon: 'support247', label: '24/7 Support' },
-  { icon: 'instantDelivery', label: 'Instant Delivery' },
-  { icon: 'rankedSafe', label: 'Ranked Safe' },
-  { icon: 'triggerBot', label: 'Trigger Bot' },
-  { icon: 'boneSelect', label: 'Bone Select' },
-  { icon: 'liveStatus', label: 'Live Status' },
-  { icon: 'autoUpdates', label: 'Auto Updates' },
+  { icon: 'uavRadar', label: 'Radar' },
+  { icon: 'streamProof', label: 'Stream proof' },
+  { icon: 'compareCloudBackup', label: 'Cloud DMA' },
+  { icon: 'settings', label: 'Profiles' },
 ];
 
 export const heroStatIcons: IconName[] = [
@@ -70,56 +50,17 @@ export const heroStatIcons: IconName[] = [
   'heroStatHeadphones',
 ];
 
-export const cheatTierIcons: Record<string, IconName> = {
-  Lite: 'tierLite',
-  Pro: 'tierPro',
-  Elite: 'tierElite',
-};
-
-export const productCategoryIcons: Record<string, IconName> = {
-  'Core product': 'coreProduct',
-  'External suite': 'externalSuite',
-  'DMA hardware': 'dmaHardware',
-  'System utility': 'systemUtility',
-  'Account recovery': 'accountRecovery',
-  Cosmetic: 'cosmetic',
-};
-
-export const acquisitionStepIcons: IconName[] = ['acqPackage', 'acqSettings', 'acqZap', 'acqCheck'];
-
-/** After-purchase timeline on product detail — one distinct icon per step */
-export const productAcquisitionStepIcons: IconName[] = [
-  'liveStatus',
-  'acqPackage',
-  'headphones',
-  'acqCheck',
-];
-
-/** Product detail requirement tiles — prefer compat-style icons where mapped */
-export const productRequirementIcons: Partial<Record<IconName, IconName>> = {
-  reqWindows: 'compatWindows',
-  reqSteam: 'compatSteam',
-  reqSettings: 'compatPackage',
-  reqWifi: 'compatWifi',
-  reqCpu: 'compatMonitor',
-  reqRestorePoint: 'compatRefresh',
-  reqShieldGuide: 'compatShield',
-  reqMailOrder: 'mail',
-  reqShieldAccount: 'compatShield',
-  reqWifiPortal: 'compatWifi',
-};
-
-export function requirementDisplayIcon(icon: IconName): IconName {
-  return productRequirementIcons[icon] ?? icon;
-}
-
+/** Matches `t.compatibility.items` order on the homepage. */
 export const compatibilityIcons: IconName[] = [
-  'compatWindows',
-  'compatPackage',
-  'compatSteam',
-  'compatMonitor',
-  'compatRefresh',
-  'compatWifi',
-  'compatDiscord',
-  'compatShield',
+  'whyMonitor',
+  'layers',
+  'stepCrosshair',
+  'compareCloudBackup',
+  'fieldShield',
+  'settings',
+  'heroStatStream',
 ];
+
+export const cheatTierIcons: Record<string, IconName> = {};
+
+export const productCategoryIcons: Record<string, IconName> = {};

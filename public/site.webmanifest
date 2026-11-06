@@ -1,7 +1,7 @@
 {
-  "name": "DotaCheats",
-  "short_name": "DotaCheats",
-  "description": "Dota 2 cheats with scripts, map hack, zoom hack and skin changer for PC.",
+  "name": "BorderlandsCheats",
+  "short_name": "BL3 Cheats",
+  "description": "Premium Borderlands 3 cheats for PC: soft aim, ESP, loot ESP, radar and stream-proof overlay.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

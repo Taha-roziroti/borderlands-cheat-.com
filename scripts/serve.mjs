@@ -5,7 +5,7 @@ import zlib from 'node:zlib';
 import { resolvePathRedirect } from './redirects.mjs';
 import { resolveCheckoutPathRedirect } from '../src/config/checkout-redirects.mjs';
 
-const CANONICAL_HOST = 'dotacheats.com';
+const CANONICAL_HOST = 'borderlandscheats.com';
 const distDir = path.resolve('dist');
 const port = Number(process.env.PORT) || 3000;
 
@@ -164,9 +164,10 @@ const server = http.createServer((req, res) => {
   }
 
   const { pathname, query, fragment } = splitUrl(req.url);
+
   const checkoutRedirect = resolveCheckoutPathRedirect(pathname);
   if (checkoutRedirect) {
-    res.writeHead(302, { Location: checkoutRedirect });
+    res.writeHead(301, { Location: checkoutRedirect });
     res.end();
     return;
   }
@@ -184,9 +185,9 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const fallback = path.join(distDir, '404.html');
-  if (fs.existsSync(fallback)) {
-    sendFile(req, res, fallback, 404);
+  const notFoundHtml = path.join(distDir, '404.html');
+  if (fs.existsSync(notFoundHtml)) {
+    sendFile(req, res, notFoundHtml, 404);
     return;
   }
 

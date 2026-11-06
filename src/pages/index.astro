@@ -1,38 +1,100 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSection from '../components/HeroSection.astro';
-import FeaturesSection from '../components/FeaturesSection.astro';
-import WhySetupSection from '../components/WhySetupSection.astro';
-import ProductsSection from '../components/ProductsSection.astro';
-import ContentSections from '../components/ContentSections.astro';
-import { t } from '../i18n';
-import { resolvePageSeo } from '../config/seo';
-import { faqPageSchema, organizationSchema, websiteSchema } from '../utils/schema';
-import { getLandingFaqs } from '../data/faq';
-import { webpSrc } from '../utils/responsiveImage';
+import ContentPageLayout from '../components/ContentPageLayout.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { getCollection, render } from 'astro:content';
+import { BL3_PRICING } from '../config/pricing';
+import { PRIMARY_CHECKOUT_PATH } from '../config/checkout';
+import { DEFAULT_OG_IMAGE } from '../config/seo';
+import { breadcrumbSchema, faqPageSchema, productMultiOfferSchema, siteIdentityGraphNodes } from '../utils/schema';
+import { extractMarkdownFaqs, plainTextFromMarkdownChunk } from '../utils/markdownFaq';
+import { DEFAULT_IMAGE_WIDTHS, webpSrc } from '../utils/responsiveImage';
 
-const seo = resolvePageSeo('/');
-const homeFaqs = getLandingFaqs();
-const heroLcpImage = webpSrc('/images/gameplay/dota-2-map-hack.png', 512);
+const allPages = await getCollection('pages');
+const entry = allPages.find((e) => e.data.slug === '/');
+if (!entry) {
+  throw new Error('Missing src/content/pages/home.mdx with slug: "/"');
+}
+
+const { Content } = await render(entry);
+const { title, description } = entry.data;
+
+const homeFaqs = extractMarkdownFaqs(entry.body ?? '').map((f, i) => ({
+  num: String(i + 1).padStart(2, '0'),
+  q: f.q,
+  a: plainTextFromMarkdownChunk(f.a),
+}));
+
+const HERO_KEY_ART = '/images/gameplay/borderlands-3-key-art-hero.webp';
+
+const productLd = productMultiOfferSchema({
+  name: 'Borderlands 3 premium PC cheat',
+  description:
+    'Premium Borderlands 3 PC cheat software with configurable soft aim, enemy and loot ESP, radar, stream-proof overlay, and profile saves. Cloud DMA required for full functionality on supported builds.',
+  url: '/',
+  offerPageUrl: PRIMARY_CHECKOUT_PATH,
+  image: DEFAULT_OG_IMAGE,
+  offers: [
+    {
+      name: BL3_PRICING.monthly.label,
+      price: BL3_PRICING.monthly.price,
+      description: BL3_PRICING.monthly.description,
+    },
+    {
+      name: BL3_PRICING.lifetime.label,
+      price: BL3_PRICING.lifetime.price,
+      description: BL3_PRICING.lifetime.description,
+    },
+  ],
+  priceCurrency: BL3_PRICING.currency,
+});
+
+const heroLcpImage = webpSrc(HERO_KEY_ART, 640);
+
+const heroHeading = 'Borderlands 3 Cheats for PC';
+
+const jsonLd = [
+  ...siteIdentityGraphNodes(),
+  productLd,
+  ...(homeFaqs.length > 0 ? [faqPageSchema(homeFaqs)] : []),
+  breadcrumbSchema([{ name: 'Home', path: '/' }]),
+];
 ---
 
-<BaseLayout
-  title={seo.title}
-  description={seo.description}
-  jsonLd={[websiteSchema(), organizationSchema(), faqPageSchema(homeFaqs.map((f, i) => ({ num: String(i + 1).padStart(2, '0'), q: f.q, a: f.a.replace(/<[^>]+>/g, '') })))]}
->
-  <link
-    slot="head"
-    rel="preload"
-    as="image"
-    href={heroLcpImage}
-    type="image/webp"
-    media="(min-width: 1024px)"
-    fetchpriority="high"
-  />
-  <HeroSection />
-  <FeaturesSection />
-  <ProductsSection />
-  <WhySetupSection />
-  <ContentSections />
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <link slot="head" rel="preload" as="image" href={heroLcpImage} type="image/webp" fetchpriority="high" />
+  <div class="pt-[4.5rem] lg:pt-[4.75rem]">
+    <div class="mx-auto max-w-6xl px-5 pb-6 md:pb-8">
+      <section class="relative isolate overflow-hidden rounded-xl border border-border bg-card shadow-sm" aria-labelledby="home-hero-heading">
+        <div class="relative aspect-[16/9] min-h-[12rem] w-full">
+          <ResponsiveImage
+            src={HERO_KEY_ART}
+            alt="Borderlands 3 key art: Calypso Twins with Vault branding"
+            width={1920}
+            height={1080}
+            loading="eager"
+            fetchPriority="high"
+            sizes="(min-width: 1200px) 1128px, 100vw"
+            widths={DEFAULT_IMAGE_WIDTHS}
+            class="h-full w-full object-cover object-[center_20%]"
+          />
+          <div
+            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"
+            aria-hidden="true"
+          />
+          <div class="absolute inset-x-0 bottom-0 p-5 md:p-8">
+            <h1 id="home-hero-heading" class="text-3xl font-bold uppercase tracking-tight md:text-4xl">
+              {heroHeading}
+            </h1>
+            <p class="mt-2 max-w-2xl text-pretty text-sm text-muted-foreground md:text-base">
+              {description}
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <ContentPageLayout breadcrumbs={[{ name: 'Home', path: '/' }]} showBreadcrumbs={false}>
+      <Content />
+    </ContentPageLayout>
+  </div>
 </BaseLayout>

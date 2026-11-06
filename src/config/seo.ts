@@ -4,11 +4,12 @@ import { getPageSeoEntry } from './pageSeo';
 
 export const SITE_ORIGIN = `https://${t.site.domain}`;
 
-export const DEFAULT_OG_IMAGE = '/images/gameplay/dota-2-map-hack.png';
+/** Default Open Graph share image — 1200×630 JPEG under /og/ (see scripts/generate-seo-assets.mjs). */
+export const DEFAULT_OG_IMAGE = '/og/default.jpg';
 
 export const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
 
-/** @example @dotacheats */
+/** @example @borderlandscheats */
 export const TWITTER_SITE = import.meta.env.PUBLIC_TWITTER_SITE as string | undefined;
 
 export const TWITTER_CREATOR = import.meta.env.PUBLIC_TWITTER_CREATOR as string | undefined;
@@ -54,8 +55,6 @@ export function pageTitle(keyword: string, brand = t.site.name): string {
 
 export const DEFAULT_OG_IMAGE_WIDTH = 1200;
 export const DEFAULT_OG_IMAGE_HEIGHT = 630;
-
-export const RSS_FEED_PATH = '/rss.xml';
 
 /** Used by IndexNow postbuild script. */
 export const INDEXNOW_HOST = INDEXNOW_HOST_NAME;

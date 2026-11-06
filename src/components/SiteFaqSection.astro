@@ -12,6 +12,8 @@ interface Props {
   items: SiteFaqItem[];
   id?: string;
   titleId?: string;
+  /** When the page already has an h1, set to h2 for the FAQ block title */
+  sectionHeadingLevel?: 'h1' | 'h2';
   class?: string;
   /** Full /faq/ experience — all topics chip bar */
   variant?: 'full' | 'contextual';
@@ -22,6 +24,7 @@ const {
   items,
   id,
   titleId = 'faq-heading',
+  sectionHeadingLevel,
   class: className,
   variant = 'contextual',
   filterTopics: filterTopicsProp,
@@ -40,6 +43,7 @@ const showFilters = filterTopics.length > 1;
   title={copy.title}
   subtitle={copy.subtitle}
   titleId={titleId}
+  sectionHeadingLevel={sectionHeadingLevel}
   showFilters={showFilters}
   filterTopics={filterTopics}
   class={className}

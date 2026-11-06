@@ -1,8 +1,9 @@
+export declare const AFFILIATE_BASE: string;
+
 export declare const CHECKOUT_URLS: {
-  readonly dota2: string;
-  readonly skinChanger: string;
+  readonly borderlands3: string;
+  readonly cloudDma: string;
   readonly hwidSpoofer: string;
-  readonly ugc: string;
 };
 
 export declare const CHECKOUT_PATH_REDIRECTS: ReadonlyMap<string, string>;

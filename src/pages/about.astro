@@ -5,7 +5,7 @@ import { resolvePageSeo } from '../config/seo';
 
 const seo = resolvePageSeo('/about/');
 import LegalPage from '../components/LegalPage.astro';
-import { breadcrumbSchema, organizationSchema, webPageSchema } from '../utils/schema';
+import { breadcrumbSchema, siteIdentityGraphNodes, webPageSchema } from '../utils/schema';
 
 const content = t.legalPages.about;
 ---
@@ -14,7 +14,7 @@ const content = t.legalPages.about;
   title={seo.title}
   description={seo.description}
   jsonLd={[
-    organizationSchema(),
+    ...siteIdentityGraphNodes(),
     webPageSchema({
       name: content.title,
       description: content.description,

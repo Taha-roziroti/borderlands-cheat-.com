@@ -3,20 +3,54 @@ import Icon from './icons/Icon.astro';
 import type { IconName } from './icons/types';
 
 interface Props {
-  href: string;
+  /** Omit when rendering as a button (e.g. dialog trigger). */
+  href?: string;
+  /** e.g. sponsored affiliate outbound */
+  rel?: string;
+  target?: string;
   class?: string;
   ariaLabel?: string;
   icon?: IconName;
+  /** Use `button` for modal triggers; default `a` for navigation. */
+  as?: 'a' | 'button';
+  type?: 'button' | 'submit';
 }
 
-const { href, class: className, ariaLabel, icon = 'arrowRight' } = Astro.props;
+const {
+  href,
+  rel,
+  target,
+  class: className,
+  ariaLabel,
+  icon = 'arrowRight',
+  as = 'a',
+  type = 'button',
+} = Astro.props;
+
 ---
 
-<a href={href} class:list={['slide-reveal-btn', className]} aria-label={ariaLabel}>
-  <span class="slide-reveal-btn__icon" aria-hidden="true">
-    <Icon name={icon} size={18} class="slide-reveal-btn__svg" />
-  </span>
-  <span class="slide-reveal-btn__text">
-    <slot />
-  </span>
-</a>
+{
+  as === 'button' ? (
+    <button
+      type={type}
+      class:list={['slide-reveal-btn', 'cursor-pointer appearance-none border-0 bg-transparent p-0 font-inherit', className]}
+      aria-label={ariaLabel}
+    >
+      <span class="slide-reveal-btn__icon" aria-hidden="true">
+        <Icon name={icon} size={18} class="slide-reveal-btn__svg" />
+      </span>
+      <span class="slide-reveal-btn__text">
+        <slot />
+      </span>
+    </button>
+  ) : (
+    <a href={href} class:list={['slide-reveal-btn', className]} aria-label={ariaLabel} rel={rel} target={target}>
+      <span class="slide-reveal-btn__icon" aria-hidden="true">
+        <Icon name={icon} size={18} class="slide-reveal-btn__svg" />
+      </span>
+      <span class="slide-reveal-btn__text">
+        <slot />
+      </span>
+    </a>
+  )
+}

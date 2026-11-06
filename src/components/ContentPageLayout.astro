@@ -1,0 +1,25 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+import { Prose } from '@/components/starwind/prose';
+import type { BreadcrumbItem } from '../utils/schema';
+
+interface Props {
+  breadcrumbs: BreadcrumbItem[];
+  showBreadcrumbs?: boolean;
+}
+const { breadcrumbs, showBreadcrumbs = true } = Astro.props;
+---
+
+<article class="py-8 md:py-12">
+  <div class="mx-auto max-w-3xl px-5">
+    {showBreadcrumbs && <Breadcrumbs items={breadcrumbs} />}
+    <Prose
+      class:list={[
+        showBreadcrumbs ? 'mt-8' : 'mt-0',
+        'max-w-none [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:uppercase md:[&_h1]:text-4xl [&_h2]:mt-10 [&_h2]:scroll-mt-24 [&_h3]:mt-6',
+      ]}
+    >
+      <slot />
+    </Prose>
+  </div>
+</article>

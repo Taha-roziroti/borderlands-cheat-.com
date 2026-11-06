@@ -3,6 +3,9 @@ Allow: /
 
 Disallow: /go/
 
-Sitemap: https://dotacheats.com/sitemap.xml
+User-agent: Googlebot
+Allow: /
 
-# RSS: https://dotacheats.com/rss.xml
+Allow: /sitemap.xml
+
+Sitemap: https://borderlandscheats.com/sitemap.xml

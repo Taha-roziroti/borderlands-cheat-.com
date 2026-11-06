@@ -256,6 +256,12 @@ export interface Translations {
     browseCheatsMobile: string;
     homeAria: string;
     checkoutAria: string;
+    checkoutChoiceTitle: string;
+    checkoutChoiceSubtitle: string;
+    checkoutChoiceBl3: string;
+    checkoutChoiceCloudDma: string;
+    checkoutChoiceSpoofer: string;
+    checkoutChoiceCancel: string;
     discordAria: string;
     menuOpen: string;
     menuClose: string;

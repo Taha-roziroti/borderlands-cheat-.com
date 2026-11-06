@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentPageLayout from '../components/ContentPageLayout.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { BL3_PRICING } from '../config/pricing';
+import { PRIMARY_CHECKOUT_PATH } from '../config/checkout';
+import {
+  articleSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+  productMultiOfferSchema,
+  siteIdentityGraphNodes,
+  webPageSchema,
+} from '../utils/schema';
+import { extractMarkdownFaqs, plainTextFromMarkdownChunk } from '../utils/markdownFaq';
+import { breadcrumbNameForSlug } from '../utils/contentPages';
+
+export async function getStaticPaths() {
+  const all = await getCollection('pages');
+  return all
+    .filter((e) => e.data.slug !== '/')
+    .map((entry) => {
+      const parts = entry.data.slug.replace(/^\/|\/$/g, '').split('/').filter(Boolean);
+      if (parts.length !== 1) {
+        throw new Error(`[pages] Expected single URL segment, got: ${entry.data.slug}`);
+      }
+      return { params: { slug: parts[0] }, props: { entry } };
+    });
+}
+
+interface Props {
+  entry: CollectionEntry<'pages'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, slug: slugPath } = entry.data;
+
+const faqItems = extractMarkdownFaqs(entry.body ?? '').map((f) => ({
+  q: f.q,
+  a: plainTextFromMarkdownChunk(f.a),
+}));
+
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: breadcrumbNameForSlug(slugPath), path: slugPath },
+];
+
+const canonicalPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+
+const baseLd = [
+  ...siteIdentityGraphNodes(),
+  webPageSchema({
+    name: title,
+    description,
+    url: canonicalPath,
+  }),
+  breadcrumbSchema(breadcrumbs),
+];
+
+let extraLd: Record<string, unknown>[] = [];
+
+if (faqItems.length > 0) {
+  extraLd.push(faqPageSchema(faqItems.map((f, i) => ({ num: String(i + 1).padStart(2, '0'), ...f }))));
+}
+
+if (slugPath === '/borderlands-3-pricing/') {
+  extraLd.push(
+    productMultiOfferSchema({
+      name: 'Borderlands 3 premium PC cheat access',
+      description:
+        'Monthly and lifetime access plans for Borderlands 3 PC cheat software. Verify current price and duration on the checkout page before purchase.',
+      url: canonicalPath,
+      offerPageUrl: PRIMARY_CHECKOUT_PATH,
+      image: '/images/gameplay/borderlands-3-cheats-gameplay-hero.webp',
+      offers: [
+        {
+          name: BL3_PRICING.monthly.label,
+          price: BL3_PRICING.monthly.price,
+          description: `${BL3_PRICING.monthly.description} (${BL3_PRICING.monthly.durationDays} days).`,
+        },
+        {
+          name: BL3_PRICING.lifetime.label,
+          price: BL3_PRICING.lifetime.price,
+          description: BL3_PRICING.lifetime.description,
+        },
+      ],
+      priceCurrency: BL3_PRICING.currency,
+    }),
+  );
+}
+
+if (slugPath === '/borderlands-3-cheats-setup/') {
+  extraLd.push(
+    articleSchema({
+      name: title,
+      description,
+      url: canonicalPath,
+      image: '/images/gameplay/borderlands-3-cheats-gameplay-hero.webp',
+      datePublished: '2025-11-06T00:00:00.000Z',
+    }),
+  );
+}
+
+const jsonLd = [...baseLd, ...extraLd];
+
+const isSetup = slugPath === '/borderlands-3-cheats-setup/';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogType={isSetup ? 'article' : 'website'}
+  articlePublishedTime={isSetup ? '2025-11-06T00:00:00.000Z' : undefined}
+  articleModifiedTime={isSetup ? '2025-11-06T00:00:00.000Z' : undefined}
+  jsonLd={jsonLd}
+>
+  <ContentPageLayout breadcrumbs={breadcrumbs}>
+    <Content />
+  </ContentPageLayout>
+</BaseLayout>

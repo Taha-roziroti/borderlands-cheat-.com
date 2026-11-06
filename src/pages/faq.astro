@@ -2,11 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getAllFaqs } from '../data/faq';
 import { resolvePageSeo } from '../config/seo';
-import { breadcrumbSchema, faqPageSchema, webPageSchema } from '../utils/schema';
+import { breadcrumbSchema, faqPageSchema, siteIdentityGraphNodes, webPageSchema } from '../utils/schema';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SiteFaqSection from '../components/SiteFaqSection.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-
 const seo = resolvePageSeo('/faq/');
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -20,10 +18,11 @@ const faqs = getAllFaqs();
   title={seo.title}
   description={seo.description}
   jsonLd={[
+    ...siteIdentityGraphNodes(),
     webPageSchema({
-      name: 'FAQ — Dota 2 Cheats & Products',
+      name: 'FAQ — Borderlands 3 Cheats & Setup',
       description:
-        'Answers about Dota 2 cheat tiers, map hack, scripts, HWID tools, blog guides and checkout at dotacheats.com.',
+        'Answers about Borderlands 3 soft aim, ESP, Cloud DMA, pricing, checkout, and setup at borderlandscheats.com.',
       url: '/faq/',
     }),
     faqPageSchema(faqs.map((f, i) => ({ num: String(i + 1).padStart(2, '0'), q: f.q, a: f.a.replace(/<[^>]+>/g, '') }))),
@@ -34,15 +33,14 @@ const faqs = getAllFaqs();
     <div class="mx-auto max-w-6xl px-5">
       <Breadcrumbs items={breadcrumbs} />
       <div class="mt-6">
-        <SectionHeader
-          eyebrow="Help center"
-          title="FAQ for cheats, products & guides"
-          desc="Everything about Lite, Pro, Elite tiers, utilities, safety and blog topics—in one place."
-          titleId="faq-page-title"
-        />
+        <header class="section-header space-y-0">
+          <p class="section-header__eyebrow">Help center</p>
+          <h1 id="faq-page-title" class="section-header__title">Borderlands 3 cheats FAQ</h1>
+          <p class="section-header__subtitle">Features, Cloud DMA, pricing, and setup—in one place.</p>
+        </header>
       </div>
     </div>
   </section>
 
-  <SiteFaqSection items={faqs} variant="full" titleId="faq-page-list" />
+  <SiteFaqSection items={faqs} variant="full" titleId="faq-page-list" sectionHeadingLevel="h2" />
 </BaseLayout>

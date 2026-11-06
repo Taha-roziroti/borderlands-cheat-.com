@@ -1,6 +1,7 @@
 ---
 import { t } from '../i18n';
-import { checkoutPath } from '../config/checkout';
+import { checkoutPath, checkoutProductForPathname } from '../config/checkout';
+import CheckoutChoiceModal from './CheckoutChoiceModal.astro';
 import { Button } from '@/components/starwind/button';
 import AnimatedThemeSwitch from './AnimatedThemeSwitch.astro';
 import {
@@ -16,14 +17,19 @@ import SlideRevealButton from './SlideRevealButton.astro';
 import type { IconName } from './icons/types';
 
 const navIcons: Record<string, IconName> = {
-  Products: 'navProducts',
-  Blog: 'navBlog',
-  Forum: 'messageCircle',
-  FAQ: 'navFaq',
+  Features: 'navFeatures',
+  Aimbot: 'crosshair',
+  ESP: 'featureEsp',
+  Pricing: 'package',
+  'Cloud DMA': 'compareCloudBackup',
+  Setup: 'settings',
   Support: 'navSupport',
 };
 
-const purchaseUrl = checkoutPath('dota2');
+const pathname = Astro.url.pathname;
+const directCheckoutProduct = checkoutProductForPathname(pathname);
+const purchaseUrl = directCheckoutProduct ? checkoutPath(directCheckoutProduct) : null;
+const showCheckoutChoice = purchaseUrl === null;
 ---
 
 <header class="pointer-events-none fixed inset-x-0 top-0 z-50">
@@ -32,10 +38,10 @@ const purchaseUrl = checkoutPath('dota2');
       class="pointer-events-auto relative flex h-14 w-full max-w-6xl items-center justify-between gap-3 rounded-2xl border border-border/40 bg-background/35 px-4 text-foreground shadow-md shadow-black/5 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/25 dark:border-white/10 dark:bg-background/20 dark:shadow-black/25 sm:px-5 lg:h-[3.75rem]"
     >
     <a href="/" class="inline-flex min-w-0 items-center font-[family-name:var(--font-heading)] text-lg font-bold tracking-wide" aria-label={t.ui.homeAria}>
-      <span class="truncate" aria-hidden="true">Dota<span class="text-primary">Cheats</span></span>
+      <span class="truncate" aria-hidden="true">Borderlands<span class="text-primary">Cheats</span></span>
     </a>
 
-    <nav class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 lg:flex" aria-label="Primary">
+    <nav class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 xl:flex" aria-label="Primary">
       {t.nav.map((link) => (
         <a
           href={link.href}
@@ -51,18 +57,32 @@ const purchaseUrl = checkoutPath('dota2');
 
     <div class="flex items-center gap-2">
       <div class="hidden items-center sm:flex">
-        <SlideRevealButton href={purchaseUrl} class="hidden lg:inline-flex" ariaLabel={t.ui.checkoutAria}>
-          {t.ui.browseCheats}
-        </SlideRevealButton>
+        {
+          showCheckoutChoice ? (
+            <SlideRevealButton
+              as="button"
+              type="button"
+              class="hidden lg:inline-flex"
+              ariaLabel={t.ui.checkoutAria}
+              data-checkout-open=""
+            >
+              {t.ui.browseCheats}
+            </SlideRevealButton>
+          ) : (
+            <SlideRevealButton href={purchaseUrl!} class="hidden lg:inline-flex" ariaLabel={t.ui.checkoutAria}>
+              {t.ui.browseCheats}
+            </SlideRevealButton>
+          )
+        }
         <div class="nav-action-divider hidden items-center px-3 lg:flex" aria-hidden="true">
           <span class="block h-9 w-px bg-border"></span>
         </div>
         <AnimatedThemeSwitch size="md" ariaLabel={t.ui.themeLight} class="inline-flex" />
       </div>
 
-      <Sheet class="lg:hidden">
+      <Sheet class="xl:hidden">
         <SheetTrigger
-          class="inline-flex size-9 items-center justify-center rounded-lg border border-border/80 bg-background/50 text-foreground transition-colors hover:bg-muted lg:hidden"
+          class="inline-flex size-9 items-center justify-center rounded-lg border border-border/80 bg-background/50 text-foreground transition-colors hover:bg-muted xl:hidden"
           aria-label={t.ui.menuOpen}
         >
           <Icon name="menu" size={20} />
@@ -84,9 +104,23 @@ const purchaseUrl = checkoutPath('dota2');
               </a>
             ))}
           </nav>
-          <Button as="a" href={purchaseUrl} variant="primary" class="w-full justify-center" aria-label={t.ui.checkoutAria}>
-            {t.ui.browseCheatsMobile}
-          </Button>
+          {
+            showCheckoutChoice ? (
+              <Button
+                type="button"
+                variant="primary"
+                class="w-full justify-center"
+                aria-label={t.ui.checkoutAria}
+                data-checkout-open=""
+              >
+                {t.ui.browseCheatsMobile}
+              </Button>
+            ) : (
+              <Button as="a" href={purchaseUrl!} variant="primary" class="w-full justify-center" aria-label={t.ui.checkoutAria}>
+                {t.ui.browseCheatsMobile}
+              </Button>
+            )
+          }
           <div class="flex justify-center pt-1">
             <AnimatedThemeSwitch size="sm" ariaLabel={t.ui.themeLight} />
           </div>
@@ -95,4 +129,25 @@ const purchaseUrl = checkoutPath('dota2');
     </div>
     </div>
   </div>
+  {showCheckoutChoice && <CheckoutChoiceModal />}
+  <script is:inline>
+    (function () {
+      function bind() {
+        var dialog = document.getElementById('checkout-choice-dialog');
+        if (!dialog || typeof dialog.showModal !== 'function') return;
+        document.querySelectorAll('[data-checkout-open]').forEach(function (btn) {
+          if (btn.dataset.checkoutBound) return;
+          btn.dataset.checkoutBound = '1';
+          btn.addEventListener('click', function () {
+            dialog.showModal();
+          });
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bind);
+      } else {
+        bind();
+      }
+    })();
+  </script>
 </header>

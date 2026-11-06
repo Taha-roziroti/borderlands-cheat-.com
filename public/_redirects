@@ -1,0 +1,16 @@
+# Apex host only — send www to non-www
+https://www.borderlandscheats.com/*  https://borderlandscheats.com/:splat  301
+
+# Legacy / commercial aliases
+/buy-borderlands-3-cheats/  /  301
+/borderlands-3-hack/  /borderlands-3-aimbot/  301
+/borderlands-3-wallhack/  /borderlands-3-esp/  301
+/borderlands-3-aim/  /borderlands-3-aimbot/  301
+
+# Affiliate checkout (single-hop to Zadeyo; internal /go/* must not be a separate HTML hop)
+/go/borderlands-3  https://zadeyo.com/go/TAHA?to=%2Fproducts%2Fborderlands-3  301
+/go/borderlands-3/  https://zadeyo.com/go/TAHA?to=%2Fproducts%2Fborderlands-3  301
+/go/cloud-dma  https://zadeyo.com/go/TAHA?to=%2Fproducts%2Fcloud-dma  301
+/go/cloud-dma/  https://zadeyo.com/go/TAHA?to=%2Fproducts%2Fcloud-dma  301
+/go/hwid-spoofer  https://zadeyo.com/go/TAHA?to=%2Fproducts%2Fhwid-spoofer  301
+/go/hwid-spoofer/  https://zadeyo.com/go/TAHA?to=%2Fproducts%2Fhwid-spoofer  301

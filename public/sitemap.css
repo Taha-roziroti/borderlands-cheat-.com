@@ -1,0 +1,34 @@
+/* Human-readable sitemap view (<?xml-stylesheet href="/sitemap.css"?>) */
+urlset {
+  display: block;
+  font-family: system-ui, sans-serif;
+  margin: 1rem;
+}
+url {
+  display: block;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+loc {
+  display: block;
+  font-weight: 600;
+  color: #111827;
+}
+lastmod,
+changefreq,
+priority {
+  display: block;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+image\:image,
+'image:image' {
+  display: block;
+  margin-top: 0.25rem;
+}
+image\:loc {
+  display: block;
+  font-size: 0.8rem;
+  color: #4b5563;
+}

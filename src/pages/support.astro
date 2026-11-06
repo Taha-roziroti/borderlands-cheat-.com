@@ -4,7 +4,7 @@ import { t } from '../i18n';
 import { resolvePageSeo } from '../config/seo';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ContactSupportSection from '../components/ContactSupportSection.astro';
-import { breadcrumbSchema, webPageSchema } from '../utils/schema';
+import { breadcrumbSchema, siteIdentityGraphNodes, webPageSchema } from '../utils/schema';
 
 const seo = resolvePageSeo('/support/');
 ---
@@ -13,6 +13,7 @@ const seo = resolvePageSeo('/support/');
   title={seo.title}
   description={seo.description}
   jsonLd={[
+    ...siteIdentityGraphNodes(),
     webPageSchema({
       name: t.support.title,
       description: t.support.subtitle,

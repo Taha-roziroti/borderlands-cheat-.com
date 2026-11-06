@@ -1,0 +1,46 @@
+{
+  "/": {
+    "primary": "Borderlands 3 cheats",
+    "secondaries": ["soft aim", "ESP", "PC"]
+  },
+  "/borderlands-3-aimbot/": {
+    "primary": "Borderlands 3 aimbot",
+    "secondaries": ["soft aim", "FOV", "PC"]
+  },
+  "/borderlands-3-esp/": {
+    "primary": "Borderlands 3 ESP",
+    "secondaries": ["enemy ESP", "loot ESP", "radar"]
+  },
+  "/borderlands-3-pricing/": {
+    "primary": "Borderlands 3 cheat price",
+    "secondaries": ["monthly access", "lifetime access"]
+  },
+  "/cloud-dma-borderlands-3/": {
+    "primary": "Cloud DMA Borderlands 3",
+    "secondaries": ["Hyper-V", "setup", "Windows"]
+  },
+  "/borderlands-3-cheats-setup/": {
+    "primary": "Borderlands 3 cheat setup",
+    "secondaries": ["Windows requirements", "Cloud DMA"]
+  },
+  "/faq/": {
+    "primary": "Borderlands 3 cheats FAQ",
+    "secondaries": ["pricing", "Cloud DMA", "Steam"]
+  },
+  "/about/": {
+    "primary": "About BorderlandsCheats",
+    "secondaries": ["Borderlands 3", "features", "site"]
+  },
+  "/support/": {
+    "primary": "BorderlandsCheats support",
+    "secondaries": ["checkout", "contact", "help"]
+  },
+  "/privacy/": {
+    "primary": "BorderlandsCheats privacy policy",
+    "secondaries": ["cookies", "analytics", "data"]
+  },
+  "/terms/": {
+    "primary": "BorderlandsCheats terms",
+    "secondaries": ["conditions", "purchases", "legal"]
+  }
+}

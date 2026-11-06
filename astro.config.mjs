@@ -1,17 +1,13 @@
 import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
 export default defineConfig({
-  site: 'https://dotacheats.com',
+  site: 'https://borderlandscheats.com',
   trailingSlash: 'always',
   redirects: {
-    '/cheats/': '/products/dota-2-cheats/',
-    '/cheats/lite/': '/products/dota-2-cheats/',
-    '/cheats/pro/': '/products/dota-2-cheats/',
-    '/cheats/elite/': '/products/dota-2-cheats/elite/',
-    '/cheats/compare/': '/blog/dota-2-lite-vs-pro/',
     '/contact/': '/support/',
   },
   compressHTML: true,
@@ -23,9 +19,17 @@ export default defineConfig({
     enabled: false,
   },
   integrations: [
+    mdx(),
     sitemap({
       filter: (page) => !page.includes('/404') && !page.includes('/go/'),
       serialize: sitemapSerialize,
+      xslURL: '/sitemap.css',
+      namespaces: {
+        news: false,
+        xhtml: false,
+        image: true,
+        video: false,
+      },
     }),
   ],
   vite: {
