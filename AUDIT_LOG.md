@@ -143,21 +143,21 @@ npm run audit
 
 Spell = `cspell` via audit. Spacing = Playwright overflow pass + screenshots under `audit-artifacts/viewports/` (375/768/1024/1440). Images/alt = audit image rules + alt plausibility vs page. Relevancy = primary keyword + stated intent.
 
-**Note:** `last_changed` = short git SHA **after** Pass 3 commit (fill in post-commit).
+**Note:** `last_changed` = short git SHA for Pass 3.
 
 | page | primary (keyword map) | intent | spelling | spacing | images & alt | relevancy | status | last_changed |
 |------|------------------------|--------|----------|---------|----------------|-----------|--------|----------------|
-| `/` | Borderlands 3 cheats | Commercial / overview | pass | pass | pass | pass | pass | _TBD_ |
-| `/borderlands-3-aimbot/` | Borderlands 3 aimbot | Informational feature | pass | pass | pass | pass | pass | _TBD_ |
-| `/borderlands-3-esp/` | Borderlands 3 ESP | Informational feature | pass | pass | pass | pass | pass | _TBD_ |
-| `/borderlands-3-pricing/` | Borderlands 3 cheat price | Commercial | pass | pass | pass | pass | pass | _TBD_ |
-| `/cloud-dma-borderlands-3/` | Cloud DMA Borderlands 3 | Informational / setup | pass | pass | pass | pass | pass | _TBD_ |
-| `/borderlands-3-cheats-setup/` | Borderlands 3 cheat setup | Informational how‑to | pass | pass | pass | pass | pass | _TBD_ |
-| `/faq/` | Borderlands 3 cheats FAQ | Informational | pass | pass | pass | pass | pass | _TBD_ |
-| `/about/` | About BorderlandsCheats | Informational trust | pass | pass | pass | pass | pass | _TBD_ |
-| `/support/` | BorderlandsCheats support | Informational / help | pass | pass | pass | pass | pass | _TBD_ |
-| `/privacy/` | BorderlandsCheats privacy policy | Legal | pass | pass | pass | pass | pass | _TBD_ |
-| `/terms/` | BorderlandsCheats terms | Legal | pass | pass | pass | pass | pass | _TBD_ |
+| `/` | Borderlands 3 cheats | Commercial / overview | pass | pass | pass | pass | pass | 83f4fe2 |
+| `/borderlands-3-aimbot/` | Borderlands 3 aimbot | Informational feature | pass | pass | pass | pass | pass | 83f4fe2 |
+| `/borderlands-3-esp/` | Borderlands 3 ESP | Informational feature | pass | pass | pass | pass | pass | 83f4fe2 |
+| `/borderlands-3-pricing/` | Borderlands 3 cheat price | Commercial | pass | pass | pass | pass | pass | 83f4fe2 |
+| `/cloud-dma-borderlands-3/` | Cloud DMA Borderlands 3 | Informational / setup | pass | pass | pass | pass | pass | 83f4fe2 |
+| `/borderlands-3-cheats-setup/` | Borderlands 3 cheat setup | Informational how‑to | pass | pass | pass | pass | pass | 83f4fe2 |
+| `/faq/` | Borderlands 3 cheats FAQ | Informational | pass | pass | pass | pass | pass | 83f4fe2 |
+| `/about/` | About BorderlandsCheats | Informational trust | pass | pass | pass | pass | pass | 83f4fe2 |
+| `/support/` | BorderlandsCheats support | Informational / help | pass | pass | pass | pass | pass | 83f4fe2 |
+| `/privacy/` | BorderlandsCheats privacy policy | Legal | pass | pass | pass | pass | pass | 83f4fe2 |
+| `/terms/` | BorderlandsCheats terms | Legal | pass | pass | pass | pass | pass | 83f4fe2 |
 
 **Spacing justification:** No horizontal overflow at 320–1440; screenshots show consistent section padding and no edge-hugging body text beyond designed `max-w` prose; no overlapping chrome observed in sampled pages.
 
