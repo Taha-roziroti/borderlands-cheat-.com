@@ -1,0 +1,39 @@
+---
+/**
+ * Markdown body images: responsive WebP srcset (400/640/960) for prose width (~max 768px).
+ */
+import ResponsiveImage from './ResponsiveImage.astro';
+import { PROSE_IMAGE_WIDTHS, PROSE_IMAGE_SIZES } from '../utils/responsiveImage';
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  fetchPriority?: 'high' | 'low' | 'auto';
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  width = 1920,
+  height = 1080,
+  loading = 'lazy',
+  fetchPriority,
+  class: className = 'rounded-lg border border-border',
+} = Astro.props;
+---
+
+<ResponsiveImage
+  src={src}
+  alt={alt}
+  width={width}
+  height={height}
+  loading={loading}
+  fetchPriority={fetchPriority}
+  widths={PROSE_IMAGE_WIDTHS}
+  sizes={PROSE_IMAGE_SIZES}
+  class={className}
+/>

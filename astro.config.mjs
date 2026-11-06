@@ -19,7 +19,7 @@ export default defineConfig({
     enabled: false,
   },
   integrations: [
-    mdx(),
+    mdx({ optimize: true }),
     sitemap({
       filter: (page) => !page.includes('/404') && !page.includes('/go/'),
       serialize: sitemapSerialize,

@@ -8,7 +8,7 @@ const root = process.cwd();
 spawnSync(process.execPath, [path.join(root, 'scripts', 'generate-bl3-placeholders.mjs')], {
   stdio: 'inherit',
 });
-const widths = [320, 400, 512, 640, 960];
+const widths = [320, 400, 512, 640, 768, 960];
 const dirs = ['public/images/gameplay'];
 
 async function optimizeDir(relativeDir) {
@@ -38,7 +38,8 @@ async function optimizeDir(relativeDir) {
       const output = path.join(dir, `${base}-${width}.webp`);
       await sharp(input)
         .resize({ width, withoutEnlargement: true })
-        .webp({ quality: 82, effort: 4 })
+        /** Slightly lower quality keeps mobile LCP under Lighthouse thresholds while staying visually acceptable at game-screenshot resolutions. */
+        .webp({ quality: 76, effort: 4 })
         .toFile(output);
       console.log(`Wrote ${path.relative(root, output)}`);
     }

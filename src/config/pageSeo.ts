@@ -9,9 +9,9 @@ export interface PageSeoEntry {
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
-    title: 'Borderlands 3 PC cheat tools | soft aim, ESP & radar',
+    title: 'Borderlands 3 cheats for PC | soft aim, ESP & radar',
     description:
-      'Borderlands 3 cheats for PC: configurable soft aim, enemy and loot ESP, radar, and stream-proof overlay. Compare plans and setup notes on borderlandscheats.com.',
+      'Borderlands 3 cheats overview for PC: soft aim, enemy and loot ESP, radar, and stream-proof overlay. Compare plans and setup on borderlandscheats.com.',
   },
   '/borderlands-3-aimbot/': {
     title: 'Borderlands 3 Aimbot & Soft Aim Settings | PC',
@@ -24,14 +24,14 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Borderlands 3 ESP: enemy and boss highlights, loot rarity filters, radar range, and markers. See what the ESP menu can display on PC before you buy.',
   },
   '/borderlands-3-pricing/': {
-    title: 'Borderlands 3 Cheat Price | Monthly or Lifetime',
+    title: 'Borderlands 3 cheat price | monthly or lifetime access',
     description:
-      'Borderlands 3 cheat pricing: monthly and lifetime access with the same listed feature set. Confirm current price and term on the seller checkout page before paying.',
+      'Borderlands 3 cheat price: monthly and lifetime plans share the same listed feature set. Confirm current amount and term on the seller checkout page before you pay.',
   },
   '/cloud-dma-borderlands-3/': {
-    title: 'Cloud DMA Borderlands 3 setup | Hyper-V host guide',
+    title: 'Cloud DMA Borderlands 3 | Hyper-V host setup guide',
     description:
-      'Cloud DMA for Borderlands 3: Hyper-V on one PC, firmware and Windows security checks, and how it fits the supported cheat stack. Read requirements before purchase.',
+      'Cloud DMA Borderlands 3: single-PC Hyper-V host, firmware and Windows checks, and how it fits the cheat stack. Read requirements before purchase.',
   },
   '/borderlands-3-cheats-setup/': {
     title: 'Borderlands 3 Cheat Setup | Windows & Cloud DMA',
@@ -39,29 +39,29 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Borderlands 3 cheat setup for Windows 10 and 11: RAM, virtualization, Hyper-V, and Cloud DMA steps. Use this guide with the seller’s loader documentation.',
   },
   '/faq/': {
-    title: 'Borderlands 3 Cheats FAQ | Features & Checkout',
+    title: 'Borderlands 3 cheats FAQ | features, DMA & checkout',
     description:
-      'FAQ for Borderlands 3 soft aim, ESP, Cloud DMA, Steam or Epic PC clients, pricing, and checkout links. Short answers with links to full pages on this site.',
+      'Borderlands 3 cheats FAQ: soft aim, ESP, Cloud DMA, Steam or Epic on PC, pricing, and checkout links—short answers with links to full pages here.',
   },
   '/terms/': {
-    title: 'Terms of use for BorderlandsCheats visitors | BL3 site',
+    title: 'BorderlandsCheats terms of use | checkout & site rules',
     description:
-      'Terms for using borderlandscheats.com and for purchases started through outbound checkout links. Read together with the Privacy Policy.',
+      'BorderlandsCheats terms for borderlandscheats.com and purchases started through outbound checkout links. Read together with the Privacy Policy.',
   },
   '/privacy/': {
-    title: 'Privacy policy for borderlandscheats.com | data & cookies',
+    title: 'BorderlandsCheats privacy policy | data, cookies, email',
     description:
-      'How borderlandscheats.com uses analytics, cookies, and contact details when you browse or email support. No sale of personal data; see full policy.',
+      'BorderlandsCheats privacy policy: how borderlandscheats.com uses analytics, cookies, and contact details when you browse or email support—no sale of personal data.',
   },
   '/about/': {
-    title: 'About BorderlandsCheats | Borderlands 3 Info Site',
+    title: 'About BorderlandsCheats | Borderlands 3 cheat info',
     description:
-      'BorderlandsCheats explains Borderlands 3 PC cheat features, Cloud DMA context, and setup. Purchases and delivery are handled by the linked seller after checkout.',
+      'About BorderlandsCheats: Borderlands 3 PC cheat features, Cloud DMA context, and setup—purchases and delivery run through the linked seller after checkout.',
   },
   '/support/': {
-    title: 'Support and contact for BorderlandsCheats | orders & FAQ',
+    title: 'BorderlandsCheats support | contact & order help',
     description:
-      'Contact BorderlandsCheats for site and link questions. Order and loader issues go through the seller’s channels tied to your checkout receipt.',
+      'BorderlandsCheats support for borderlandscheats.com and checkout links. Order and loader help goes through the seller channels on your receipt.',
   },
 };
 

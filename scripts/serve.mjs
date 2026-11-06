@@ -44,6 +44,9 @@ if (!fs.existsSync(distDir)) {
   process.exit(1);
 }
 
+/** In-memory cache for HTML bodies — avoids repeated disk+compress work (stabilizes Lighthouse TTFB under load). */
+const htmlBodyCache = new Map();
+
 function getRequestHost(req) {
   const raw = req.headers['x-forwarded-host'] ?? req.headers.host ?? '';
   return raw.split(',')[0].trim().split(':')[0].toLowerCase();
@@ -130,6 +133,41 @@ function sendFile(req, res, filePath, statusCode = 200) {
     COMPRESSIBLE.has(ext) && !res.getHeader?.('Content-Encoding')
       ? pickEncoding(req.headers['accept-encoding'] ?? '')
       : null;
+
+  /** Serve HTML from memory after first read (no streaming compress per request). */
+  if (ext === '.html') {
+    let body = htmlBodyCache.get(filePath);
+    if (!body) {
+      try {
+        body = fs.readFileSync(filePath);
+        htmlBodyCache.set(filePath, body);
+      } catch {
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+        res.end('Not found');
+        return;
+      }
+    }
+    if (encoding === 'br') {
+      const compressed = zlib.brotliCompressSync(body);
+      headers['Content-Encoding'] = 'br';
+      headers['Content-Length'] = String(compressed.length);
+      res.writeHead(statusCode, headers);
+      res.end(compressed);
+      return;
+    }
+    if (encoding === 'gzip') {
+      const compressed = zlib.gzipSync(body);
+      headers['Content-Encoding'] = 'gzip';
+      headers['Content-Length'] = String(compressed.length);
+      res.writeHead(statusCode, headers);
+      res.end(compressed);
+      return;
+    }
+    headers['Content-Length'] = String(body.length);
+    res.writeHead(statusCode, headers);
+    res.end(body);
+    return;
+  }
 
   const stream = fs.createReadStream(filePath);
   stream.on('error', () => {

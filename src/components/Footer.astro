@@ -27,7 +27,7 @@ const legalLinks = [
         <p class="text-sm text-muted-foreground">{t.footer.tagline}</p>
       </div>
 
-      <nav aria-label={t.footer.explore}>
+      <nav aria-label={t.footer.explore} data-site-nav="footer">
         <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t.footer.explore}</p>
         <ul class="mt-3 space-y-2">
           {t.footer.exploreLinks.map((link) => (
@@ -45,7 +45,7 @@ const legalLinks = [
         </ul>
       </nav>
 
-      <nav aria-label={t.footer.support}>
+      <nav aria-label={t.footer.support} data-site-nav="footer">
         <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t.footer.support}</p>
         <ul class="mt-3 space-y-2">
           {resourceLinks.map((link) => (
@@ -58,7 +58,7 @@ const legalLinks = [
         </ul>
       </nav>
 
-      <nav aria-label={t.footer.legal}>
+      <nav aria-label={t.footer.legal} data-site-nav="footer">
         <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t.footer.legal}</p>
         <ul class="mt-3 space-y-2">
           {legalLinks.map((link) => (

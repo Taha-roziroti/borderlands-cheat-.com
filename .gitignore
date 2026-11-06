@@ -12,6 +12,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Lighthouse CLI may write reports to cwd
+127.0.0.1*.report.json
+*.report.json
+
 
 # environment variables
 .env
@@ -22,3 +26,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# SEO audit artifacts (screenshots, etc.)
+audit-artifacts/

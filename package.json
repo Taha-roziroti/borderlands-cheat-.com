@@ -10,6 +10,7 @@
     "generate:seo-assets": "node scripts/generate-seo-assets.mjs",
     "build": "node scripts/generate-seo-assets.mjs && node scripts/optimize-images.mjs && astro build && node scripts/prune-dist-images.mjs && node scripts/finalize-sitemap.mjs && node scripts/verify-seo.mjs && node scripts/verify-redirects.mjs && node scripts/indexnow.mjs",
     "audit": "node scripts/seo-audit.mjs",
+    "spellcheck": "cspell lint \"src/**/*.{mdx,astro,ts,tsx,css}\" \"public/robots.txt\" \"public/_redirects\" --no-progress",
     "typecheck": "astro check",
     "preview": "astro preview --host 0.0.0.0",
     "start": "node scripts/serve.mjs",
@@ -35,6 +36,10 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
+    "chrome-launcher": "^1.2.3",
+    "cspell": "^8.17.5",
+    "lighthouse": "^13.6.0",
+    "playwright": "^1.65.0",
     "typescript": "^5.9.2"
   }
 }

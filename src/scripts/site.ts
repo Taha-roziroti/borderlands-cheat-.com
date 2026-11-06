@@ -38,6 +38,10 @@ function initNavHighlight() {
 }
 
 function initInPageScroll() {
+  const prefersReducedMotion =
+    typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scrollBehavior: ScrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
   document.querySelectorAll<HTMLElement>('[data-scroll-target]').forEach((el) => {
     el.addEventListener('click', (event) => {
       const id = el.getAttribute('data-scroll-target');
@@ -47,20 +51,25 @@ function initInPageScroll() {
       if (!target) return;
 
       event.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
     });
   });
 }
 
 function initSkipLink() {
-  document.querySelectorAll<HTMLElement>('[data-skip-to-main]').forEach((button) => {
-    button.addEventListener('click', () => {
+  const prefersReducedMotion =
+    typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scrollBehavior: ScrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
+  document.querySelectorAll<HTMLElement>('a[href="#main-content"].skip-link').forEach((button) => {
+    button.addEventListener('click', (event) => {
       const main = document.getElementById('main-content');
       if (!main) return;
+      event.preventDefault();
 
       main.setAttribute('tabindex', '-1');
       main.focus({ preventScroll: false });
-      main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      main.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
     });
   });
 }

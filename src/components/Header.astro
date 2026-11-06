@@ -69,7 +69,13 @@ const showCheckoutChoice = purchaseUrl === null;
               {t.ui.browseCheats}
             </SlideRevealButton>
           ) : (
-            <SlideRevealButton href={purchaseUrl!} class="hidden lg:inline-flex" ariaLabel={t.ui.checkoutAria}>
+            <SlideRevealButton
+              href={purchaseUrl!}
+              class="hidden lg:inline-flex"
+              ariaLabel={t.ui.checkoutAria}
+              rel="sponsored noopener noreferrer"
+              target="_blank"
+            >
               {t.ui.browseCheats}
             </SlideRevealButton>
           )
@@ -116,7 +122,15 @@ const showCheckoutChoice = purchaseUrl === null;
                 {t.ui.browseCheatsMobile}
               </Button>
             ) : (
-              <Button as="a" href={purchaseUrl!} variant="primary" class="w-full justify-center" aria-label={t.ui.checkoutAria}>
+              <Button
+                as="a"
+                href={purchaseUrl!}
+                variant="primary"
+                class="w-full justify-center"
+                aria-label={t.ui.checkoutAria}
+                rel="sponsored noopener noreferrer"
+                target="_blank"
+              >
                 {t.ui.browseCheatsMobile}
               </Button>
             )

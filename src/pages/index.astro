@@ -8,7 +8,7 @@ import { PRIMARY_CHECKOUT_PATH } from '../config/checkout';
 import { DEFAULT_OG_IMAGE } from '../config/seo';
 import { breadcrumbSchema, faqPageSchema, productMultiOfferSchema, siteIdentityGraphNodes } from '../utils/schema';
 import { extractMarkdownFaqs, plainTextFromMarkdownChunk } from '../utils/markdownFaq';
-import { DEFAULT_IMAGE_WIDTHS, webpSrc } from '../utils/responsiveImage';
+import { HERO_IMAGE_WIDTHS, webpSrc } from '../utils/responsiveImage';
 
 const allPages = await getCollection('pages');
 const entry = allPages.find((e) => e.data.slug === '/');
@@ -49,7 +49,8 @@ const productLd = productMultiOfferSchema({
   priceCurrency: BL3_PRICING.currency,
 });
 
-const heroLcpImage = webpSrc(HERO_KEY_ART, 640);
+/** Preload must match the default `img src` (first entry in `widths` on ResponsiveImage) so LH does not fetch an oversized LCP candidate. */
+const heroLcpImage = webpSrc(HERO_KEY_ART, HERO_IMAGE_WIDTHS[0]);
 
 const heroHeading = 'Borderlands 3 Cheats for PC';
 
@@ -75,7 +76,7 @@ const jsonLd = [
             loading="eager"
             fetchPriority="high"
             sizes="(min-width: 1200px) 1128px, 100vw"
-            widths={DEFAULT_IMAGE_WIDTHS}
+            widths={HERO_IMAGE_WIDTHS}
             class="h-full w-full object-cover object-[center_20%]"
           />
           <div

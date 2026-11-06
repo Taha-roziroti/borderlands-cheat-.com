@@ -6,9 +6,9 @@ export const en: Translations = {
   site: {
     name: 'BorderlandsCheats',
     domain: 'borderlandscheats.com',
-    title: 'Borderlands 3 PC cheat tools | soft aim, ESP & radar',
+    title: 'Borderlands 3 cheats for PC | soft aim, ESP & radar',
     description:
-      'Borderlands 3 cheats for PC: configurable soft aim, enemy and loot ESP, radar, and stream-proof overlay. Compare plans and setup notes on borderlandscheats.com.',
+      'Borderlands 3 cheats overview for PC: soft aim, enemy and loot ESP, radar, and stream-proof overlay. Compare plans and setup on borderlandscheats.com.',
     discord: PRIMARY_CHECKOUT_PATH,
   },
   nav: [
@@ -340,7 +340,7 @@ export const en: Translations = {
     about: {
       title: 'About BorderlandsCheats',
       description:
-        'BorderlandsCheats publishes informational pages about premium Borderlands 3 PC cheat software at borderlandscheats.com.',
+        'About BorderlandsCheats: informational pages on premium Borderlands 3 PC cheat software, Cloud DMA context, and setup at borderlandscheats.com.',
       sections: [
         {
           heading: 'Who we are',
@@ -364,9 +364,9 @@ export const en: Translations = {
       ],
     },
     privacy: {
-      title: 'Privacy Policy',
+      title: 'BorderlandsCheats privacy policy',
       description:
-        'How borderlandscheats.com handles analytics, cookies, and contact data when you browse or reach out.',
+        'BorderlandsCheats privacy policy: how borderlandscheats.com uses analytics, cookies, and contact data when you browse or email support.',
       sections: [
         {
           heading: 'Information we collect',
@@ -395,9 +395,9 @@ export const en: Translations = {
       ],
     },
     terms: {
-      title: 'Terms & Conditions',
+      title: 'BorderlandsCheats terms of use',
       description:
-        'Use terms for borderlandscheats.com and purchases initiated through linked checkout.',
+        'BorderlandsCheats terms for borderlandscheats.com and purchases you start through linked checkout pages.',
       sections: [
         {
           heading: 'Agreement',

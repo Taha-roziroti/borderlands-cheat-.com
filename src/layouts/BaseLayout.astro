@@ -67,6 +67,18 @@ const robotsContent = noindex
     <meta name="robots" content={robotsContent} />
     <meta name="googlebot" content={robotsContent} />
     <meta name="theme-color" content="#7F3DEE" />
+    <style is:inline>
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
     <link rel="canonical" href={canonical} />
     <link rel="image_src" href={ogImageUrl} />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
@@ -130,7 +142,7 @@ const robotsContent = noindex
 
   </head>
   <body class="min-h-screen bg-background text-foreground">
-    <button type="button" class="skip-link" data-skip-to-main>{t.ui.skipLink}</button>
+    <a href="#main-content" class="skip-link">{t.ui.skipLink}</a>
     <Header />
     <main id="main-content">
       <slot />
