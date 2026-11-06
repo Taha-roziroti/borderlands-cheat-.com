@@ -135,6 +135,11 @@ npm run audit
 # Run 3 (no file edits)
 npm run audit
 # SEO audit: PASS (0 issues).
+
+# After commit 4b6a476 (review-table SHA update), repeated with no working tree changes between runs:
+npm run audit  # PASS (0 issues).
+npm run audit  # PASS (0 issues).
+npm run audit  # PASS (0 issues).
 ```
 
 ---
